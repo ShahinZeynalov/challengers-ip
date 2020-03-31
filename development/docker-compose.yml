@@ -1,0 +1,13 @@
+version: '3.5'
+services:
+  db:
+    image: postgres
+    restart: on-failure
+    volumes:
+      - ./pgdb/:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: 'local_challengers_db'
+      POSTGRES_USER: 'local_db_user'
+      POSTGRES_PASSWORD: 1

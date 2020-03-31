@@ -9,8 +9,8 @@ def export_csv(modeladmin, request, queryset):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=mymodel.csv'
     writer = csv.writer(response, csv.excel)
-    response.write(u'\ufeff'.encode('utf8')) 
-    
+    response.write(u'\ufeff'.encode('utf8'))
+
     writer.writerow([
         smart_str(u"Ad"),
         smart_str(u"Soyad"),
@@ -46,7 +46,7 @@ class ApplicantStatusAdmin(admin.ModelAdmin):
 class MessageAdmin(admin.ModelAdmin):
     list_display = ('sender_name', 'message_text', 'sender_email')
 
-admin.site.site_header = "Challengers Club - Admin Dashboard" 
+admin.site.site_header = "Challengers Club - Admin Dashboard"
 admin.site.unregister(Group)
 admin.site.unregister(User)
 admin.site.register(Question, QuestionAdmin)

@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="az">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +12,7 @@
     <title>Challengers Club</title>
 </head>
 <body>
-    <div class="modal-overlay">
+    <!-- <div class="modal-overlay">
         <div class="modal">
             <section class="modal-header">
                 Dəyərli Namizədlər !
@@ -24,7 +23,7 @@
                 təşəkkür edirik.
             </section>
         </div>
-    </div>
+    </div> -->
 
     <div class="contact-overlay">
         <div class="contact-popup">
@@ -85,6 +84,7 @@
                         <li><a data-scroll="attendants" href="#attendants-section">İştirakçılar</a></li>
                         <li><a data-scroll="most-asked" href="#most-asked-section">Sual - Cavab</a></li>
                         <li><a data-scroll="contact" href="#contact-section">Əlaqə</a></li>
+                        <li><a href="">Login</a></li>
                         <!-- <li><button class="apply-button popup-opener">Müraciət et</button></li> -->
                     </ul>
                 </div>
@@ -632,7 +632,7 @@
                 <p class="contact-p">E-mail: &nbsp; <a href="mailto:hi@challengers.az">hi@challengers.az</a></p>
             </div>
 
-            <div class="contact-right-side">
+            <!-- <div class="contact-right-side">
                 <form action="{% url 'challengers:index' %}" method="POST">
                     {% csrf_token %}
                     <div class="messaging-container">
@@ -654,6 +654,13 @@
                     <textarea rows="5" name="{{ form.message_text.name }}" required
                     oninvalid="this.setCustomValidity('Mesaj bölməsini boş saxlamaq olmaz.')"
                     oninput="this.setCustomValidity('')"></textarea><br />
+                    <input type="submit" value="Göndər" class="apply-button">
+                </form>
+            </div> -->
+            <div class="contact-right-side">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
                     <input type="submit" value="Göndər" class="apply-button">
                 </form>
             </div>

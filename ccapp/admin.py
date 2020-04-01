@@ -48,7 +48,6 @@ class MessageAdmin(admin.ModelAdmin):
 
 admin.site.site_header = "Challengers Club - Admin Dashboard"
 admin.site.unregister(Group)
-admin.site.unregister(User)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Applicant, ApplicantAdmin)
 # admin.site.register(ApplicantStatus, ApplicantStatusAdmin)

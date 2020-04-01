@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ccapp',
+    'ccapp.apps.CcappConfig',
+    'account_app.apps.AccountAppConfig',
+    'dashboard_app.apps.DashboardAppConfig'
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'ccproject.urls'
+
+SITE_ID = 1
 
 TEMPLATES = [
     {
@@ -93,15 +97,27 @@ else:
         }
     }
 
+AUTH_USER_MODEL = 'account_app.User'
+
+ACCOUNT_UNIQUE_EMAIL=True
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_USERNAME_REQUIRED = False
+
 ADMINS = [('Kamran', 'kamransrecovery@gmail.com')]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# SERVER_EMAIL = 'hi@challengers.az'
+# EMAIL_HOST_USER = 'hi@challengers.az'
+# EMAIL_HOST_PASSWORD = 'Qartdere1'
+
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tech.academy.user2@gmail.com'
+EMAIL_HOST_PASSWORD = 'fsqcyadagqipthcz'
 EMAIL_PORT = 587
-SERVER_EMAIL = 'hi@challengers.az'
-EMAIL_HOST_USER = 'hi@challengers.az'
-EMAIL_HOST_PASSWORD = 'Qartdere1'
+EMAIL_USE_TLS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators

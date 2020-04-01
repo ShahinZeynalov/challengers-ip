@@ -28,8 +28,5 @@ class HomePageView(FormMixin, TemplateView):
             send_feedback_email(sender_email, sender_name)
             return self.form_valid(form)
         else:
+            print(form.errors)
             return self.form_invalid(form)
-
-    def form_invalid(self,form):
-        context = super().form_invalid(form)
-        return context

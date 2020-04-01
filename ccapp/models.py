@@ -12,9 +12,9 @@ class Question(models.Model):
 class ApplicantStatus(models.Model):
     class Meta:
         verbose_name_plural = "Applicant Statuses"
-        
+
     name = models.CharField(max_length=30)
-    
+
     def __str__(self):
         return self.name
 
@@ -36,6 +36,8 @@ class Message(models.Model):
     message_text = models.CharField(max_length=1000)
     sender_name = models.CharField(max_length=30)
     sender_email = models.EmailField(max_length=50)
+
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.sender_name

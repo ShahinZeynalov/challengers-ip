@@ -119,6 +119,12 @@ EMAIL_HOST_PASSWORD = 'fsqcyadagqipthcz'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+from django.urls import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard:dashboard')
+LOGIN_URL = reverse_lazy('account:login')
+
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 

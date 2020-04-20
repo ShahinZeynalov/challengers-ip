@@ -124,7 +124,6 @@ from django.urls import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('dashboard:dashboard')
 LOGIN_URL = reverse_lazy('account:login')
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -157,14 +156,16 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 if PROD:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 else:
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')

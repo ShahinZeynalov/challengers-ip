@@ -1,0 +1,267 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Your profile
+{% endblock title %}
+
+{% block content %}
+<div style='margin-top:66px'>
+  <ul class="nav nav-tabs d-flex justify-content-center pt-3">
+    <li class="nav-item">
+      <a class="nav-link {% if request.path == '/dashboard/settings/profile/' %} nav-link active {% endif %}"  href="{% url 'account:user-profile' %}">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if request.path == '/dashboard/settings/admin/' %} nav-link active {% endif %}"  href="{% url 'account:user-admin' %}">Account</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link {% if request.path == '/dashboard/settings/security/' %} nav-link active {% endif %}" href="{% url 'account:user-security' %}">Security</a>
+    </li>
+  </ul>
+    <div class="settings container">
+      {% if request.path == '/dashboard/settings/profile/' %}
+      <div class="card general">
+        <div class="card-header border-bottom">
+            <h3>profile Info</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 general">
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Name:</h4>
+                      </div>
+                      <div class="col-8">
+                        <p class='m-0'>{{user.get_full_name}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Username:</h4>
+                      </div>
+                      <div class="col-8">
+                        <p class='m-0'>{{user.username}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Birthday:</h4>
+                      </div>
+                      <div class="col-8">
+                        <p class='m-0'>{{user.date_of_birth}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Gender:</h4>
+                      </div>
+                      <div class="col-8">
+                        <p class='m-0'>{{user.get_gender_display}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Bio:</h4>
+                      </div>
+                      <div class="col-8">
+                        <p class='m-0'><a href="">add</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+              </div>
+              <div class="col-md-5 col-sm-1 d-none d-lg-block d-md-block">
+                <img src="{{user.get_user_avatar}}" alt="..." class="img-thumbnail">
+                <div class="">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                    Update Photo
+                  </button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalCenterTitle">Edit Profile</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form action="{% url 'account:user-profile-edit-picture' user.pk %}" method = "POST">
+                        <div class="modal-body">
+                            {% csrf_token %}
+                            {{ EditProfileImageForm }}
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <input type="submit" class="btn btn-primary" name="" value="Save changes">
+                        </div>
+                      </form>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Edit Profile Info
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="{% url 'account:user-profile-edit' user.pk %}" method = "POST">
+                  <div class="modal-body">
+                      {% csrf_token %}
+                      {{ EditProfileForm }}
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" name="" value="Save changes">
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+
+          </div>
+      </div>
+
+      <div class="card activities">
+        <div class="card-header border-bottom">
+          <div class="activities">
+            <h3>Activities</h3>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="badges">
+            <div class="row">
+              <div class="col-12">
+                <div>
+                  <h4 class="card-title text-center">Your badges</h4>
+                  <hr>
+                </div>
+                <div class="badges text-center">
+                  {% for badge in user.badges.all %}
+                  <p>{{ badge.name }}</p>
+                    <img src="{{badge.get_image}}" alt="" style="width:100px;">
+                    <p>{{ badge.description }}</p>
+
+                  {% endfor %}
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {% elif request.path == '/dashboard/settings/admin/' %}
+      <div class="card general">
+        <div class="card-header border-bottom">
+            <h3>Account Info</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 general">
+
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Email:</h4>
+                      </div>
+                      <div class="col-8">
+                        <p class='m-0'>{{user.email}} <a href="">edit</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+              </div>
+            </div>
+          </div>
+      </div>
+      {% else %}
+      <div class="card general">
+        <div class="card-header border-bottom">
+            <h3>settings Info</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 general">
+
+                <div class="mt-2">
+                  <div class="name">
+                    <div class="row d-flex align-items-center">
+                      <div class="col-4 m-0">
+                        <h4 class="m-0">Password:</h4>
+                      </div>
+                      <div class="col-8">
+                        <input type="password" name="" value="{{user.get_password}}">
+                        {{user.get_password}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr class='m-0'>
+
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+              Change Password
+            </button>
+
+          </div>
+      </div>
+
+
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock content %}

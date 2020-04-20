@@ -17,8 +17,9 @@
             <h2 class='mt-3'>Login</h2>
           </div>
           <div class="card-body py-4">
-            <form method='POST'>
+            <form action = {% url 'account:login' %} method='POST'>
               {% csrf_token %}
+              {{ form.non_field_errors }}
               <div class="form-group">
                 <label for="name">Email</label>
                 {{ form.username }}

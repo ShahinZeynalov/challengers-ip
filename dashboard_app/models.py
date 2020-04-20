@@ -11,3 +11,7 @@ class Badge(models.Model):
 
     def __str__(self):
         return f'{self.name} {self.created_at}'
+
+    def get_image(self):
+        if self.image:
+            return f'/media/{self.image}'

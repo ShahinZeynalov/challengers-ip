@@ -2,3 +2,4 @@
 .idea
 pgdb
 .local_postgres_data_backups
+media

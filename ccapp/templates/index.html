@@ -90,10 +90,11 @@
             </div>
         </nav>
 
-        {{ user }}
         {% if user.is_authenticated %}
-        <a href="{% url 'account:logout' %}?next=/"><div class="btn apply-button popup-opener">Logout</div></a>
-        <a href="{% url 'dashboard:dashboard' %}"><div class="btn apply-button popup-opener">Got To Dashboard</div></a>
+        <div class= 'foat-left'>
+          <a href="{% url 'account:logout' %}?next=/"><div class="btn apply-button popup-opener">Logout</div></a>
+          <a href="{% url 'dashboard:dashboard' %}"><div class="btn apply-button popup-opener pt-2">Got To Dashboard</div></a>
+        </div>
         {% else %}
         <a href="{% url 'account:login' %}"><div class="btn apply-button popup-opener">Login</div></a>
         {% endif %}

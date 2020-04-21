@@ -6,6 +6,7 @@ from .forms import ProfileEditForm, ProfileImageEditForm
 from .models import User
 from .forms import LoginForm
 from django.urls import reverse_lazy
+from .mixins import ProfileEditMixin
 
 class CustomLoginView(LoginView):
     form_class = LoginForm
@@ -28,14 +29,14 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         context['EditProfileImageForm'] = ProfileImageEditForm(instance=self.object)
         return context
 
-class ProfileEditView(LoginRequiredMixin, UpdateView):
+class ProfileEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
     model = User
     form_class = ProfileEditForm
-
+    fields = ("image",)
     def get_success_url(self):
         return reverse_lazy('account:user-profile')
 
-class ProfileImageEditView(LoginRequiredMixin, UpdateView):
+class ProfileImageEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
     model = User
     form_class = ProfileImageEditForm
 

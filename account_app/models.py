@@ -12,15 +12,15 @@ GENDER_CHOICE = (
 class User(AbstractUser):
     gender = models.IntegerField(choices = GENDER_CHOICE, default=-1)
     date_of_birth = models.DateField(null=True, blank= True)
-    profile_image = models.ImageField(upload_to='user/images', null=True,blank=True)
+    profile_image = models.ImageField(upload_to='user/images', null=True, blank=True)
 
     email = models.EmailField(_('email address'), unique=True)
     badges = models.ManyToManyField(Badge,related_name='users', blank=True)
-
+    
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['username','first_name']
-    
+
     def get_user_avatar(self):
         if self.profile_image:
             return f'/media/{self.profile_image}'

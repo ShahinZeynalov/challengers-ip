@@ -101,11 +101,11 @@
                 <img src="{{user.get_user_avatar}}" alt="..." class="img-thumbnail">
                 <div class="">
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#update-photo">
                     Update Photo
                   </button>
                   <!-- Modal -->
-                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal fade" id="update-photo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -114,11 +114,10 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                        <form action="{% url 'account:user-profile-edit-picture' user.pk %}" method = "POST">
+                        <form action="{% url 'account:user-profile-edit-picture' user.pk %}" method = "POST" enctype="multipart/form-data">
                         <div class="modal-body">
                             {% csrf_token %}
                             {{ EditProfileImageForm }}
-
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

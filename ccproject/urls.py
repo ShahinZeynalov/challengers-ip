@@ -26,5 +26,6 @@ urlpatterns = [
     path('', include('ccapp.urls')),
     path('', include('dashboard_app.urls')),
     path('', include('account_app.urls')),
+    path('', include('sms_app.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,7 +1,7 @@
 from django import forms
 from .models import User
 from django.views.generic.edit import FormView, UpdateView
-from django.contrib.auth.forms import ( AuthenticationForm, )
+from django.contrib.auth.forms import ( AuthenticationForm, PasswordChangeForm )
 class LoginForm(AuthenticationForm):
     username = forms.EmailField(
         label='',
@@ -25,14 +25,21 @@ class LoginForm(AuthenticationForm):
         model = User
         fields = ['username','password']
 
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    pass
+
+
 class ProfileEditForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ['username', 'first_name', 'last_name', 'date_of_birth', 'gender']
 
 
 class ProfileImageEditForm(forms.ModelForm):
+    profile_image = forms.ImageField(widget = forms.FileInput(attrs={'class' : 'form-control shadow-none',}))
+
     class Meta:
         model = User
         fields = ['profile_image']

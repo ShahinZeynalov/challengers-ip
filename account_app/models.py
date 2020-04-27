@@ -9,6 +9,7 @@ GENDER_CHOICE = (
     (0,'male'),
     (1,'female'),
 )
+
 class User(AbstractUser):
     gender = models.IntegerField(choices = GENDER_CHOICE, default=-1)
     date_of_birth = models.DateField(null=True, blank= True)
@@ -16,7 +17,7 @@ class User(AbstractUser):
 
     email = models.EmailField(_('email address'), unique=True)
     badges = models.ManyToManyField(Badge,related_name='users', blank=True)
-    
+
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
     REQUIRED_FIELDS = ['username','first_name']
@@ -26,7 +27,3 @@ class User(AbstractUser):
             return f'/media/{self.profile_image}'
         else:
             return 'https://img.favpng.com/8/19/8/united-states-avatar-organization-information-png-favpng-J9DvUE98TmbHSUqsmAgu3FpGw.jpg'
-
-
-    def get_password(self):
-        return self.password

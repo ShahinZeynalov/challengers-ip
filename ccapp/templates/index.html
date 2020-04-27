@@ -98,7 +98,6 @@
         {% else %}
         <a href="{% url 'account:login' %}"><div class="btn apply-button popup-opener">Login</div></a>
         {% endif %}
-
         <nav class="small-nav">
             <div class="container">
                 <div class="left-nav">
@@ -282,28 +281,14 @@
                 {% for applicant in applicants %}
                 <div class="card">
                     <div class="img-container">
-                        <img src="{{ applicant.photo }}" alt="Image not found :/">
+                        <img src="{{ applicant.get_user_avatar }}" alt="Image not found :/">
                     </div>
                     <div class="card-body">
-                        <h3 class="attendant-name">{{ applicant.name }} {{ applicant.surname }}</h3>
+                        <h3 class="attendant-name">{{ applicant.first_name }} {{ applicant.last_name }}</h3>
                     </div>
                 </div>
-                {% endfor %}
 
-                {% for empty_card in empty_cards %}
-                <div class="card">
-                    <div class="img-container">
-                        <div class="replace-img">
-                            <i class="fas fa-camera"></i>
-                            <p>Burada sənin şəklin ola bilər</p>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h3 class="attendant-name">Ad Soyadın</h3>
-                    </div>
-                </div>
                 {% endfor %}
-
                 <div class="hidden-layout">
 
                     <div class="card">

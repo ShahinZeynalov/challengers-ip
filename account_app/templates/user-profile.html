@@ -83,18 +83,6 @@
                 </div>
                 <hr class='m-0'>
 
-                <div class="mt-2">
-                  <div class="name">
-                    <div class="row d-flex align-items-center">
-                      <div class="col-4 m-0">
-                        <h4 class="m-0">Bio:</h4>
-                      </div>
-                      <div class="col-8">
-                        <p class='m-0'><a href="">add</a></p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 <hr class='m-0'>
               </div>
               <div class="col-md-5 col-sm-1 d-none d-lg-block d-md-block">
@@ -151,7 +139,32 @@
                   <form action="{% url 'account:user-profile-edit' user.pk %}" method = "POST">
                   <div class="modal-body">
                       {% csrf_token %}
-                      {{ EditProfileForm }}
+
+                      <div class="form-group">
+                        <label for="username">{{ EditProfileForm.username.label }}</label>
+                        <input type="text" class="form-control" name="{{ EditProfileForm.username.name }}" value="{{ EditProfileForm.username.value }}" id="username" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="first_name">{{ EditProfileForm.first_name.label }}</label>
+                        <input type="text" class="form-control" name="{{ EditProfileForm.first_name.name }}" value="{{ EditProfileForm.first_name.value }}" id="first_name" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="last_name">{{ EditProfileForm.last_name.label }}</label>
+                        <input type="text" class="form-control" name="{{EditProfileForm.last_name.name}}" value="{{ EditProfileForm.last_name.value }}" id="last_name" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="date_of_birth">{{ EditProfileForm.date_of_birth.label }}</label>
+                        <input type="text" class="form-control" name="{{EditProfileForm.date_of_birth.name}}" value="{{ EditProfileForm.date_of_birth.value|date:'Y-m-d' }}" id="date_of_birth" >
+                      </div>
+
+                      <div class="form-group">
+                        <label for="gender">{{ EditProfileForm.gender.label }}</label>
+                        {{ EditProfileForm.gender }}
+                      </div>
+                      {{EditProfileForm.errors}}
 
                   </div>
                   <div class="modal-footer">
@@ -245,6 +258,9 @@
                   </div>
                 </div>
                 <hr class='m-0'>
+                <form action="{% url 'account:user-security' user.pk %}">
+                  {{PasswordChangeForm}}
+                </form>
 
               </div>
             </div>

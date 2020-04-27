@@ -5,7 +5,7 @@ from django.views.generic.edit import FormMixin
 from .forms import ContactForm
 from django.urls import reverse_lazy
 from .emails import send_feedback_email
-
+from account_app.models import User
 class HomePageView(FormMixin, TemplateView):
     template_name = 'index.html'
     model = Message
@@ -15,7 +15,7 @@ class HomePageView(FormMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['questions'] = Question.objects.all()
-        context['applicants'] = Applicant.objects.filter(status=1)
+        context['applicants'] = User.objects.all()
         context['empty_cards'] = range(4 - Applicant.objects.filter(status=1).count())
         return context
 

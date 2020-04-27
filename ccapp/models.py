@@ -5,18 +5,18 @@ from datetime import datetime
 class Question(models.Model):
     question_text = models.TextField(max_length=200)
     answer = models.TextField(max_length=500)
-    
+
     def __str__(self):
         return self.question_text
 
 class ApplicantStatus(models.Model):
-    class Meta:
-        verbose_name_plural = "Applicant Statuses"
-
     name = models.CharField(max_length=30)
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = "Applicant Statuses"
+        
 class Applicant(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=30)
@@ -26,6 +26,7 @@ class Applicant(models.Model):
     motivation_letter = models.TextField(max_length=1000)
     status = models.ForeignKey(ApplicantStatus, on_delete=models.CASCADE, default=3)
     photo = models.FileField(upload_to='static/applicant_photos', blank=True)
+
     def __str__(self):
         return self.name
 

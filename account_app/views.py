@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.contrib.auth.views import (LoginView, )
-from django.views.generic import DetailView, UpdateView
+from django.views.generic import DetailView, UpdateView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import ProfileEditForm, ProfileImageEditForm
+from .forms import ProfileEditForm, ProfileImageEditForm, CustomPasswordChangeForm
 from .models import User
 from .forms import LoginForm
 from django.urls import reverse_lazy
 from .mixins import ProfileEditMixin
-
+from django.http import HttpResponse, HttpResponseNotFound, Http404,  HttpResponseRedirect
 class CustomLoginView(LoginView):
     form_class = LoginForm
     template_name = 'login.html'
@@ -27,18 +27,32 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         context['user'] = User.objects.get(email = self.request.user)
         context['EditProfileForm'] = ProfileEditForm(instance=self.object)
         context['EditProfileImageForm'] = ProfileImageEditForm(instance=self.object)
+        # context['PasswordChangeForm'] = CustomPasswordChangeForm(self.object)
         return context
 
 class ProfileEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
     model = User
     form_class = ProfileEditForm
-    fields = ("image",)
+
     def get_success_url(self):
         return reverse_lazy('account:user-profile')
+
+    def form_invalid(self, form):
+        """If the form is invalid, render the invalid form."""
+        # super().form_invalid(form)
+        return HttpResponseRedirect(reverse_lazy('account:user-profile'))
 
 class ProfileImageEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
     model = User
     form_class = ProfileImageEditForm
+
+    def get_success_url(self):
+        return reverse_lazy('account:user-profile')
+
+class ChangePasswordFormView(FormView):
+
+    model = User
+    form_class = CustomPasswordChangeForm
 
     def get_success_url(self):
         return reverse_lazy('account:user-profile')

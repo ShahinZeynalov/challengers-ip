@@ -30,6 +30,9 @@ class Student(models.Model):
         verbose_name = 'Tələbə'
         verbose_name_plural = 'Tələbələr'
 
+    def __str__(self):
+        return f'{self.user.get_full_name()}'
+
 
 class Group(models.Model):
     name = models.CharField('Adı', max_length=20)
@@ -121,6 +124,9 @@ class Task(models.Model):
         verbose_name = 'Sərbəst '
         verbose_name_plural = 'Tasks'
 
+    def __str__(self):
+        return f'{self.name} | {self.subject.name} | {self.deadline}'
+
 class StudentTask(models.Model):
     student = models.ForeignKey(Student, on_delete = models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete = models.CASCADE)
@@ -130,6 +136,8 @@ class StudentTask(models.Model):
     created_at = models.DateTimeField(editable=False,auto_now_add=True)
     updated_at = models.DateTimeField(editable=False, auto_now=True)
 
+    def __str__(self):
+        return f'{self.student.user.get_full_name()} | {self.point}'
 
     class Meta:
         verbose_name = 'StudentTask '

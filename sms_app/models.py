@@ -89,7 +89,7 @@ class Dairy(models.Model):
     student = models.ForeignKey(Student, on_delete=models.DO_NOTHING)
     table = models.ForeignKey(Table, on_delete = models.CASCADE)
     point = models.PositiveSmallIntegerField('Bal', choices= POINT_CHOICES)
-    day = models.DateField('Gün', default = timezone.now())
+    # day = models.DateField('Gün', default = timezone.now())
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(editable=False, auto_now=True)
@@ -101,7 +101,6 @@ class Dairy(models.Model):
 class NotParticipating(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     table = models.ForeignKey(Table, on_delete = models.CASCADE)
-    day = models.DateField('Day', default = timezone.now())
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(editable=False, auto_now=True)

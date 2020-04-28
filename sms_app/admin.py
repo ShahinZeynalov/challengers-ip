@@ -1,4 +1,5 @@
 from django.contrib import admin
+admin.autodiscover()
 from .models import (
     Teacher,Student,Group,
     Subject,Table,Dairy,

@@ -1,7 +1,6 @@
 from django.db import models
 from datetime import datetime
 
-# Create your models here.
 class Question(models.Model):
     question_text = models.TextField(max_length=200)
     answer = models.TextField(max_length=500)
@@ -16,7 +15,7 @@ class ApplicantStatus(models.Model):
 
     class Meta:
         verbose_name_plural = "Applicant Statuses"
-        
+
 class Applicant(models.Model):
     name = models.CharField(max_length=20)
     surname = models.CharField(max_length=30)

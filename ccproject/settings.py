@@ -38,10 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'sms_app',
     'ccapp.apps.CcappConfig',
     'account_app.apps.AccountAppConfig',
     'dashboard_app.apps.DashboardAppConfig',
-    'sms_app.apps.SmsAppConfig',
+    'test_app'
 ]
 
 MIDDLEWARE = [
@@ -91,9 +92,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ccproject',
-            'USER': 'kerimov',
-            'PASSWORD': '10000hoursrule',
+            'NAME': 'local_challengers_db',
+            'USER': 'local_db_user',
+            'PASSWORD': '1',
             'HOST': 'localhost',
             'PORT': '',
         }

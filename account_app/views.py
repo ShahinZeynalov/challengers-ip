@@ -8,6 +8,8 @@ from .forms import LoginForm
 from django.urls import reverse_lazy
 from .mixins import ProfileEditMixin
 from django.http import HttpResponse, HttpResponseNotFound, Http404,  HttpResponseRedirect
+from django.contrib.auth.views import PasswordChangeView
+
 class CustomLoginView(LoginView):
     form_class = LoginForm
     template_name = 'login.html'
@@ -27,7 +29,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         context['user'] = User.objects.get(email = self.request.user)
         context['EditProfileForm'] = ProfileEditForm(instance=self.object)
         context['EditProfileImageForm'] = ProfileImageEditForm(instance=self.object)
-        # context['PasswordChangeForm'] = CustomPasswordChangeForm(self.object)
+        print('---------------',self.object)
         return context
 
 class ProfileEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
@@ -49,10 +51,9 @@ class ProfileImageEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('account:user-profile')
 
-class ChangePasswordFormView(FormView):
+class CustomPasswordChangeView(PasswordChangeView):
+    template_name = 'user-profile.html'
 
-    model = User
-    form_class = CustomPasswordChangeForm
 
     def get_success_url(self):
         return reverse_lazy('account:user-profile')

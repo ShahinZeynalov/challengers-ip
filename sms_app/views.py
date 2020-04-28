@@ -1,3 +1,9 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Student
+
+
+def sms(request):
+    context = {}
+    context['users'] = Student.objects.all()
+    return render(request,'sms.html', context)

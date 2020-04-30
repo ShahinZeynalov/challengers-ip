@@ -5,7 +5,11 @@ from django.views.generic.edit import FormMixin
 from .forms import ContactForm
 from django.urls import reverse_lazy
 from .emails import send_feedback_email
-from account_app.models import User
+from sms_app.models import Student
+from .serializers import StudentDetailSerializer
+from rest_framework.generics import RetrieveAPIView
+
+
 class HomePageView(FormMixin, TemplateView):
     template_name = 'index.html'
     model = Message
@@ -15,7 +19,7 @@ class HomePageView(FormMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['questions'] = Question.objects.all()
-        context['applicants'] = User.objects.all()
+        context['applicants'] = Student.objects.all()
         context['empty_cards'] = range(4 - Applicant.objects.filter(status=1).count())
         return context
 
@@ -30,3 +34,12 @@ class HomePageView(FormMixin, TemplateView):
         else:
             print(form.errors)
             return self.form_invalid(form)
+
+
+class StudentAPIView(RetrieveAPIView):
+    queryset = Student
+    serializer_class = StudentDetailSerializer
+
+
+def chart(request):
+    return render(request, 'chart.html')

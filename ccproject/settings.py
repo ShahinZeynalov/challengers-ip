@@ -28,6 +28,7 @@ PROD = not DEBUG
 
 ALLOWED_HOSTS = ['134.209.39.229','.challengers.az','127.0.0.1']
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -38,11 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'sms_app',
     'ccapp.apps.CcappConfig',
     'account_app.apps.AccountAppConfig',
     'dashboard_app.apps.DashboardAppConfig',
-    'test_app'
+    'sms_app',
+
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

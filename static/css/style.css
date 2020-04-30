@@ -22,7 +22,7 @@
     z-index: 1;
     padding: 0px 32px;
     box-sizing: border-box;
-    padding-top: 20px;  
+    padding-top: 20px;
     position: relative;
     padding-bottom: 20px;
     width: 50%;
@@ -123,8 +123,8 @@ input, textarea{
     background-color: lightgray;
     opacity: .3;
 }
-textarea { 
-    resize: vertical; 
+textarea {
+    resize: vertical;
 }
 /* common properties ended */
 
@@ -725,7 +725,7 @@ nav.scrolled {
     z-index: 1;
     padding: 0px 32px;
     box-sizing: border-box;
-    padding-top: 20px;  
+    padding-top: 20px;
     position: relative;
     padding-bottom: 20px;
     width: 50%;
@@ -1196,7 +1196,7 @@ footer a:visited{
 
 .term-popup-body p {
     text-align: left;
-} 
+}
 
 /* responsive design  */
 @media screen and (max-width: 1060px) {
@@ -1378,5 +1378,3 @@ footer a:visited{
         height: 80vh;
     }
 }
-
-

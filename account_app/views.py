@@ -29,7 +29,6 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         context['user'] = User.objects.get(email = self.request.user)
         context['EditProfileForm'] = ProfileEditForm(instance=self.object)
         context['EditProfileImageForm'] = ProfileImageEditForm(instance=self.object)
-        print('---------------',self.object)
         return context
 
 class ProfileEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
@@ -54,6 +53,5 @@ class ProfileImageEditView(LoginRequiredMixin, ProfileEditMixin, UpdateView):
 class CustomPasswordChangeView(PasswordChangeView):
     template_name = 'user-profile.html'
 
-
     def get_success_url(self):
-        return reverse_lazy('account:user-profile')
+        return reverse_lazy('account:user-security')

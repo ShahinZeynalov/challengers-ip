@@ -272,333 +272,345 @@
             </div>
         </section>
 
-        <div class="divider"></div>
+        <div class="divider "></div>
 
-        <section id="attendants-section" data-anchor="attendants">
-            <h2>İştirakçılar</h2>
-            <div class="attendants-container">
+        <div id="app">
+          <section id="attendants-section" data-anchor="attendants">
+              <h2>İştirakçılar</h2>
+              <div class="attendants-container">
 
-                {% for applicant in applicants %}
-                <div class="card">
-                    <div class="img-container">
-                        <img src="{{ applicant.get_user_avatar }}" alt="Image not found :/">
-                    </div>
-                    <div class="card-body">
-                        <h3 class="attendant-name">{{ applicant.first_name }} {{ applicant.last_name }}</h3>
-                    </div>
-                </div>
 
-                {% endfor %}
-                <div class="hidden-layout">
-
+                    {% for applicant in applicants %}
                     <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                          <div class="img-container">
+                              <img src="{{ applicant.user.get_user_avatar }}" alt="Image not found :/" >
+                          </div>
+                          <div class="card-body">
+                              <h3 class="attendant-name">{{ applicant.user.first_name }} {{ applicant.user.last_name }} {{ applicant.pk }}</h3>
+
+                              <button class="btn btn-outline-success my-2 my-sm-0" v-on:click.prevent="getChallenger({{applicant.pk}})">Ətraflı</button>
+
+                          </div>
+                    </div>
+
+                    {% endfor %}
+                    <div class="hidden-layout">
+
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                    <div class="card">
-                        <div class="img-container">
-                            <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
-                            <div class="replace-img">
-                                <i class="fas fa-camera"></i>
-                                <p>Sənin şəklin burada</p>
+                        <div class="card">
+                            <div class="img-container">
+                                <!-- <img src="img/jobs.jpg" alt="Image not found :/"> -->
+                                <div class="replace-img">
+                                    <i class="fas fa-camera"></i>
+                                    <p>Sənin şəklin burada</p>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="attendant-name">Steve Jobs</h3>
+                                <span class="attendant-highschool">Stanford University, Computer Science</span><br>
+                                <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h3 class="attendant-name">Steve Jobs</h3>
-                            <span class="attendant-highschool">Stanford University, Computer Science</span><br>
-                            <a href="kamranmzam@code.edu.az" class="attendant-email">kamranmzam@code.edu.az</a>
-                        </div>
-                    </div>
 
-                </div>
+                    </div>
+              </div>
+          </section>
+
+          <div class="divider"></div>
+          <div class="attendants-container">
+            <div >
+
+              <h1 v-model='currentChallenger'> ${currentChallenger}</h1>
             </div>
-        </section>
 
-        <div class="divider"></div>
-
+          </div>
+        </div>
         <section id="most-asked-section" data-anchor="most-asked">
             <h2>Tez-tez soruşulan suallar</h2>
 
@@ -611,9 +623,7 @@
                 {% endfor %}
             </div>
         </section>
-
         <div class="divider"></div>
-
         <section id="contact-section" data-anchor="contact">
 
             <div class="contact-left-side">
@@ -684,6 +694,38 @@
     <script src="{% static 'js/modal.js' %}"></script>
     <script src="{% static 'js/scroll.js' %}"></script>
     <script src="{% static 'js/nav-highlighter.js' %}"></script>
+
+    <!-- vue.js files -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
+    <script type="text/javascript">
+      Vue.http.headers.common['X-CSRFToken'] = "{{ csrf_token }}";
+      new Vue({
+        el: '#app',
+        delimiters: ['${','}'],
+        data: {
+          articles: [],
+          currentChallenger: null,
+          message: 'success',
+          errors:[],
+          challengersId: null,
+        },
+
+        methods: {
+          getChallenger: function(id) {
+            this.$http.get(`/api/challengers/${id}`)
+                .then((response) => {
+                  console.log(response);
+                  this.currentChallenger = response.data;
+                  console.log(this.currentChallenger);
+                })
+                .catch((err) => {
+                  console.log(err);
+                })
+          },
+        }
+      });
+    </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 from django.db import models
 from account_app.models import User
 from django.utils import timezone
-
+from dashboard_app.models import Badge
 
 class Teacher(models.Model):
     user = models.OneToOneField(User, related_name = 'teacher', on_delete=models.CASCADE)
@@ -18,10 +18,11 @@ class Teacher(models.Model):
 
 
 class Student(models.Model):
-    user = models.OneToOneField(User, related_name='student', on_delete=models.CASCADE)
-    group = models.ForeignKey('Group', related_name='students', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name = 'student', on_delete = models.CASCADE)
+    group = models.ForeignKey('Group', related_name = 'students', on_delete = models.CASCADE)
     admission_date = models.DateField('Qəbul ili', )
     admission_point = models.PositiveIntegerField('Qəbul Balı', )
+    badges = models.ManyToManyField(Badge, related_name = 'students', blank = True, null = True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(editable=False, auto_now=True)
@@ -73,6 +74,9 @@ class Table(models.Model):
         verbose_name = 'Cədvəl'
         verbose_name_plural = 'Cədvəllər'
 
+    def __str__(self):
+        return f'{self.subject.name} | {self.starts} | {self.ends}'
+
 
 class Dairy(models.Model):
 
@@ -97,9 +101,14 @@ class Dairy(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(editable=False, auto_now=True)
 
+    def __str__(self):
+        return f' Şagird: {self.student.user.get_full_name()} | By teacher: {self.teacher.user.get_full_name()} | qiymət: {self.point} |\
+        fənn: {self.table.subject.name} | vaxt: {self.table.starts}'
+
     class Meta:
         verbose_name = 'Gündəlik qiymət'
         verbose_name_plural = 'Gündəlik qiymətlər'
+
 
 class NotParticipating(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
@@ -111,6 +120,10 @@ class NotParticipating(models.Model):
     class Meta:
         verbose_name = 'Qayıb'
         verbose_name_plural = 'Qayıblar'
+
+    def __str__(self):
+        return f'{self.student.user.get_full_name()} | {self.table.starts}'
+
 
 class Task(models.Model):
     name = models.CharField('Taskın adı', max_length = 127)
@@ -126,6 +139,7 @@ class Task(models.Model):
 
     def __str__(self):
         return f'{self.name} | {self.subject.name} | {self.deadline}'
+
 
 class StudentTask(models.Model):
     student = models.ForeignKey(Student, on_delete = models.CASCADE)

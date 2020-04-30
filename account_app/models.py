@@ -16,7 +16,6 @@ class User(AbstractUser):
     profile_image = models.ImageField(upload_to='user/images', null=True, blank=True)
 
     email = models.EmailField(_('email address'), unique=True)
-    badges = models.ManyToManyField(Badge,related_name='users', blank=True)
 
     USERNAME_FIELD = 'email'
     EMAIL_FIELD = 'email'
